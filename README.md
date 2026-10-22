@@ -2,7 +2,7 @@
 
 | 파일 | 주소 |
 |---|---|
-| 설치 파일 (Windows) | https://github.com/whomedia03/whomedia-subtitle-download/releases/latest/download/WHOMEDIA_._Setup_3.8.4.exe |
-| 사용자 매뉴얼 (PDF) | https://github.com/whomedia03/whomedia-subtitle-download/raw/main/WHOMEDIA_Manual.pdf |
+| 설치 파일 (Windows) | https://github.com/whomedia03/whomedia-subtitle-download/releases/latest/download/WHOMEDIA_Setup.exe |
+| 사용자 매뉴얼 (PDF) | https://github.com/whomedia03/whomedia-subtitle-download/releases/latest/download/WHOMEDIA_Manual.pdf |
 
-설치 파일과 같은 폴더에 `update.json`(사내 별도 전달)을 둔 뒤 실행합니다.
+설치 파일과 같은 폴더(또는 다운로드 폴더)에 `update.json`(사내 별도 전달)을 둔 뒤 실행합니다.

@@ -1,0 +1,29 @@
+# upload 브랜치에 설치 파일(조각)·매뉴얼을 올리면 Releases 에 고정 이름으로 게시하고 upload 브랜치를 지운다.
+name: release
+on:
+  push:
+    branches: [upload]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: upload
+      - name: 조각 합치기 · 해시 확인
+        run: |
+          cat WHOMEDIA_Setup.exe.part* > WHOMEDIA_Setup.exe
+          sha256sum -c WHOMEDIA_Setup.exe.sha256
+      - name: 릴리스 게시
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VER=$(cat VERSION)
+          gh release delete "v$VER" --yes --cleanup-tag || true
+          gh release create "v$VER" WHOMEDIA_Setup.exe WHOMEDIA_Manual.pdf --title "v$VER" --notes "WHOMEDIA 자막 자동화 도구 $VER" --latest
+      - name: upload 브랜치 삭제
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: git push origin --delete upload
